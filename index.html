@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Brahim Nassour — Développeur Web</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================
+RESET
+========================= */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Outfit',sans-serif;
+background:#000;
+color:#fff;
+overflow-x:hidden;
+}
+
+/* =========================
+NAVBAR
+========================= */
+
+nav{
+padding:16px 5vw;
+display:flex;
+justify-content:space-between;
+align-items:center;
+position:sticky;
+top:0;
+z-index:200;
+
+background:rgba(0,0,0,.96);
+backdrop-filter:blur(25px);
+
+border-bottom:
+1px solid rgba(255,255,255,.06);
+}
+
+.logo{
+font-family:'Playfair Display',serif;
+font-size:1rem;
+font-weight:900;
+letter-spacing:.15em;
+}
+
+.nav-wa{
+background:#25D366;
+color:#fff;
+text-decoration:none;
+
+padding:10px 18px;
+border-radius:100px;
+
+font-size:.82rem;
+font-weight:700;
+
+transition:.25s;
+}
+
+.nav-wa:hover{
+transform:translateY(-2px);
+}
+
+/* =========================
+HERO
+========================= */
+
+.hero{
+min-height:100svh;
+
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+
+text-align:center;
+
+padding:60px 5vw;
+
+position:relative;
+overflow:hidden;
+}
+
+.grid-lines{
+position:absolute;
+inset:0;
+
+background-image:
+linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+
+background-size:50px 50px;
+}
+
+.hero::after{
+content:'';
+
+position:absolute;
+
+width:500px;
+height:500px;
+
+background:
+radial-gradient(circle,
+rgba(255,255,255,.05),
+transparent 70%);
+
+filter:blur(90px);
+
+top:-150px;
+right:-150px;
+
+pointer-events:none;
+}
+
+/* =========================
+NOM PREMIUM FIX
+========================= */
+
+.name-letters{
+display:flex;
+justify-content:center;
+align-items:center;
+
+flex-wrap:nowrap;
+white-space:nowrap;
+
+width:100%;
+overflow:hidden;
+
+padding:0 12px;
+
+position:relative;
+z-index:2;
+}
+
+.letter{
+font-family:'Playfair Display',serif;
+
+font-size:clamp(2rem,8vw,7rem);
+
+font-weight:900;
+line-height:.9;
+
+display:inline-block;
+
+flex-shrink:0;
+
+animation:letterDrop .8s ease both;
+
+transition:
+transform .25s,
+text-shadow .25s;
+}
+
+.letter.space{
+width:10px;
+}
+
+.letter:hover{
+transform:
+translateY(-5px)
+scale(1.08);
+
+text-shadow:
+0 0 25px rgba(255,255,255,.8);
+}
+
+@keyframes letterDrop{
+
+from{
+opacity:0;
+transform:
+translateY(-60px)
+rotateX(90deg);
+}
+
+to{
+opacity:1;
+transform:
+translateY(0)
+rotateX(0);
+}
+
+}
+
+.hero-tagline{
+font-size:.8rem;
+letter-spacing:.4em;
+text-transform:uppercase;
+
+color:rgba(255,255,255,.4);
+
+margin-top:14px;
+margin-bottom:24px;
+}
+
+.hero-line{
+width:180px;
+height:1px;
+
+background:
+linear-gradient(
+90deg,
+transparent,
+#fff,
+transparent
+);
+
+margin-bottom:24px;
+}
+
+.hero-desc{
+max-width:380px;
+
+line-height:1.8;
+font-size:.92rem;
+
+color:rgba(255,255,255,.45);
+
+margin-bottom:32px;
+}
+
+.hero-btns{
+display:flex;
+flex-direction:column;
+gap:12px;
+
+width:100%;
+max-width:340px;
+}
+
+.btn-white,
+.btn-ghost,
+.btn-black,
+.btn-wa-big,
+.float-btn a{
+
+transition:
+transform .25s,
+box-shadow .25s;
+}
+
+.btn-white:hover,
+.btn-ghost:hover,
+.btn-black:hover,
+.btn-wa-big:hover,
+.float-btn a:hover{
+
+transform:translateY(-4px);
+
+box-shadow:
+0 20px 40px rgba(0,0,0,.35);
+}
+
+.btn-white{
+background:#fff;
+color:#000;
+
+padding:17px;
+
+text-decoration:none;
+font-weight:800;
+
+border-radius:4px;
+}
+
+.btn-ghost{
+border:
+1px solid rgba(255,255,255,.12);
+
+padding:15px;
+
+text-decoration:none;
+color:#fff;
+
+border-radius:4px;
+}
+
+/* =========================
+STATS
+========================= */
+
+.stats{
+display:flex;
+
+background:#111;
+
+border-top:
+1px solid rgba(255,255,255,.06);
+
+border-bottom:
+1px solid rgba(255,255,255,.06);
+}
+
+.stat{
+flex:1;
+
+padding:22px 10px;
+
+text-align:center;
+}
+
+.stat strong{
+font-size:1.8rem;
+
+font-family:'Playfair Display',serif;
+}
+
+.stat span{
+font-size:.72rem;
+color:rgba(255,255,255,.3);
+}
+
+/* =========================
+SECTIONS
+========================= */
+
+.projects,
+.services,
+.contact{
+padding:70px 5vw;
+}
+
+.sec-label{
+font-size:.7rem;
+
+letter-spacing:.25em;
+text-transform:uppercase;
+
+color:rgba(255,255,255,.35);
+
+margin-bottom:10px;
+
+display:block;
+}
+
+.sec-title{
+font-family:'Playfair Display',serif;
+
+font-size:clamp(2rem,6vw,3rem);
+
+margin-bottom:30px;
+}
+
+/* =========================
+PROJETS
+========================= */
+
+.proj-grid{
+display:flex;
+flex-direction:column;
+gap:12px;
+}
+
+.proj-card{
+background:#0a0a0a;
+
+border:
+1px solid rgba(255,255,255,.07);
+
+border-radius:6px;
+
+overflow:hidden;
+
+transition:
+transform .35s,
+border-color .35s,
+box-shadow .35s;
+}
+
+.proj-card:hover{
+
+transform:
+perspective(1000px)
+rotateX(3deg)
+rotateY(-3deg)
+translateY(-6px);
+
+border-color:
+rgba(255,255,255,.2);
+
+box-shadow:
+0 25px 60px rgba(255,255,255,.08);
+}
+
+.proj-header{
+padding:18px 20px 0;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.proj-tag{
+font-size:.65rem;
+text-transform:uppercase;
+
+background:rgba(255,255,255,.06);
+
+padding:4px 10px;
+
+border-radius:100px;
+}
+
+.proj-link{
+color:#fff;
+text-decoration:none;
+font-size:.85rem;
+}
+
+.proj-body{
+padding:14px 20px 20px;
+}
+
+.proj-name{
+font-family:'Playfair Display',serif;
+font-size:1.2rem;
+margin-bottom:6px;
+}
+
+.proj-desc{
+font-size:.82rem;
+line-height:1.7;
+
+color:rgba(255,255,255,.4);
+}
+
+/* =========================
+SERVICES
+========================= */
+
+.srv-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+}
+
+.srv-card{
+background:#0a0a0a;
+
+padding:22px 16px;
+
+border-radius:6px;
+
+border:
+1px solid rgba(255,255,255,.07);
+
+transition:.3s;
+}
+
+.srv-card:hover{
+transform:translateY(-5px);
+
+border-color:
+rgba(255,255,255,.15);
+}
+
+.srv-icon{
+font-size:1.6rem;
+margin-bottom:12px;
+display:block;
+}
+
+.srv-card h3{
+margin-bottom:6px;
+}
+
+.srv-card p{
+font-size:.78rem;
+line-height:1.6;
+
+color:rgba(255,255,255,.35);
+}
+
+/* =========================
+CONTACT
+========================= */
+
+.contact{
+text-align:center;
+
+background:#fff;
+color:#000;
+}
+
+.c-title{
+font-family:'Playfair Display',serif;
+
+font-size:clamp(2.2rem,8vw,4rem);
+
+line-height:1;
+margin-bottom:14px;
+}
+
+.c-sub{
+color:rgba(0,0,0,.5);
+
+margin-bottom:32px;
+}
+
+.c-btns{
+display:flex;
+flex-direction:column;
+gap:12px;
+}
+
+.btn-wa-big{
+background:#25D366;
+color:#fff;
+
+padding:18px;
+
+text-decoration:none;
+font-weight:700;
+
+border-radius:4px;
+}
+
+.btn-black{
+background:#000;
+color:#fff;
+
+padding:17px;
+
+text-decoration:none;
+font-weight:700;
+
+border-radius:4px;
+}
+
+/* =========================
+FOOTER
+========================= */
+
+footer{
+padding:30px 5vw 100px;
+
+text-align:center;
+
+border-top:
+1px solid rgba(255,255,255,.06);
+}
+
+.footer-name{
+font-family:'Playfair Display',serif;
+
+font-size:1.5rem;
+font-weight:900;
+
+margin-bottom:4px;
+}
+
+.footer-sub{
+font-size:.7rem;
+
+letter-spacing:.2em;
+text-transform:uppercase;
+
+color:rgba(255,255,255,.3);
+
+margin-bottom:14px;
+}
+
+/* =========================
+FLOAT BUTTON
+========================= */
+
+.float-btn{
+position:fixed;
+
+bottom:20px;
+left:50%;
+
+transform:translateX(-50%);
+
+width:calc(100% - 40px);
+max-width:400px;
+
+z-index:300;
+}
+
+.float-btn a{
+display:flex;
+justify-content:center;
+align-items:center;
+
+background:#25D366;
+color:#fff;
+
+padding:16px;
+
+text-decoration:none;
+font-weight:800;
+
+border-radius:100px;
+
+box-shadow:
+0 8px 30px rgba(37,211,102,.3);
+}
+
+/* =========================
+MOBILE
+========================= */
+
+@media(max-width:768px){
+
+.name-letters{
+transform:scale(.90);
+}
+
+.letter{
+font-size:clamp(1.5rem,7vw,4rem);
+}
+
+.letter.space{
+width:6px;
+}
+
+.srv-grid{
+grid-template-columns:1fr;
+}
+
+.hero-btns,
+.c-btns{
+flex-direction:column;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+
+<nav>
+
+<div class="logo">
+BRAHIM NASSOUR
+</div>
+
+<a href="https://wa.me/23565008485" class="nav-wa">
+💬 WhatsApp
+</a>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="grid-lines"></div>
+
+<div class="name-letters">
+
+<span class="letter">B</span>
+<span class="letter">R</span>
+<span class="letter">A</span>
+<span class="letter">H</span>
+<span class="letter">I</span>
+<span class="letter">M</span>
+
+<span class="letter space"></span>
+
+<span class="letter">N</span>
+<span class="letter">A</span>
+<span class="letter">S</span>
+<span class="letter">S</span>
+<span class="letter">O</span>
+<span class="letter">U</span>
+<span class="letter">R</span>
+
+</div>
+
+<p class="hero-tagline">
+— Développeur Web · N'Djamena · Tchad —
+</p>
+
+<div class="hero-line"></div>
+
+<p class="hero-desc">
+Je crée des sites modernes pour les restaurants,
+hôtels, pharmacies et entreprises.
+</p>
+
+<div class="hero-btns">
+
+<a href="https://wa.me/23565008485" class="btn-white">
+💬 Me contacter
+</a>
+
+<a href="#projets" class="btn-ghost">
+Voir mes projets →
+</a>
+
+</div>
+
+</section>
+
+<!-- STATS -->
+
+<div class="stats">
+
+<div class="stat">
+<strong>4+</strong>
+<span>Sites créés</span>
+</div>
+
+<div class="stat">
+<strong>100%</strong>
+<span>Mobile</span>
+</div>
+
+<div class="stat">
+<strong>24h</strong>
+<span>Réponse</span>
+</div>
+
+</div>
+
+<!-- PROJETS -->
+
+<section class="projects" id="projets">
+
+<span class="sec-label">
+Réalisations
+</span>
+
+<h2 class="sec-title">
+Mes projets
+</h2>
+
+<div class="proj-grid">
+
+<div class="proj-card">
+
+<div class="proj-header">
+<span class="proj-tag">Portfolio</span>
+
+<a href="https://brahimnassour088-wq.github.io/index.html/" target="_blank" class="proj-link">
+Voir ↗
+</a>
+</div>
+
+<div class="proj-body">
+<div class="proj-name">Portfolio Original</div>
+
+<div class="proj-desc">
+Première version du portfolio.
+</div>
+</div>
+
+</div>
+
+<div class="proj-card">
+
+<div class="proj-header">
+<span class="proj-tag">Services</span>
+
+<a href="https://brahimnassour088-wq.github.io/Brahim-/" target="_blank" class="proj-link">
+Voir ↗
+</a>
+</div>
+
+<div class="proj-body">
+<div class="proj-name">Brahim Services</div>
+
+<div class="proj-desc">
+Landing page moderne.
+</div>
+</div>
+
+</div>
+
+<div class="proj-card">
+
+<div class="proj-header">
+<span class="proj-tag">Premium</span>
+
+<a href="https://brahimnassour088-wq.github.io/portfolio-brahim/" target="_blank" class="proj-link">
+Voir ↗
+</a>
+</div>
+
+<div class="proj-body">
+<div class="proj-name">Portfolio Premium</div>
+
+<div class="proj-desc">
+Version premium noir et blanc.
+</div>
+</div>
+
+</div>
+
+<div class="proj-card">
+
+<div class="proj-header">
+<span class="proj-tag">Restaurant</span>
+
+<a href="https://brahimnassour088-wq.github.io/DARDAR/" target="_blank" class="proj-link">
+Voir ↗
+</a>
+</div>
+
+<div class="proj-body">
+<div class="proj-name">Restaurant DARDAR</div>
+
+<div class="proj-desc">
+Site restaurant moderne avec réservation.
+</div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- SERVICES -->
+
+<section class="services">
+
+<span class="sec-label">
+Services
+</span>
+
+<h2 class="sec-title">
+Ce que je fais
+</h2>
+
+<div class="srv-grid">
+
+<div class="srv-card">
+<span class="srv-icon">🖥️</span>
+<h3>Site Vitrine</h3>
+<p>Présentez votre entreprise.</p>
+</div>
+
+<div class="srv-card">
+<span class="srv-icon">🍽️</span>
+<h3>Restaurant</h3>
+<p>Menu et réservation WhatsApp.</p>
+</div>
+
+<div class="srv-card">
+<span class="srv-icon">🏨</span>
+<h3>Hôtel</h3>
+<p>Réservation et chambres.</p>
+</div>
+
+<div class="srv-card">
+<span class="srv-icon">💊</span>
+<h3>Pharmacie</h3>
+<p>Services et horaires.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section class="contact">
+
+<h2 class="c-title">
+Démarrons votre projet
+</h2>
+
+<p class="c-sub">
+Je réponds en moins de 24h.
+</p>
+
+<div class="c-btns">
+
+<a href="https://wa.me/23565008485" class="btn-wa-big">
+💬 WhatsApp
+</a>
+
+<a href="tel:+23565008485" class="btn-black">
+📞 Appeler
+</a>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="footer-name">
+BRAHIM NASSOUR
+</div>
+
+<div class="footer-sub">
+Développeur Web · Tchad
+</div>
+
+<p>
+© 2026 — Premium Portfolio
+</p>
+
+</footer>
+
+<!-- FLOAT -->
+
+<div class="float-btn">
+
+<a href="https://wa.me/23565008485">
+💬 Me contacter sur WhatsApp
+</a>
+
+</div>
+
+</body>
+  </html>
